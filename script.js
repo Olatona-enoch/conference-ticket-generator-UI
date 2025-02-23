@@ -72,7 +72,7 @@ removeBtn.addEventListener("click",function removeImage() {
     fileInput.value ='';
 
     imageView.innerHTML = '';  // Clear any previous image preview
-    imageView.innerHTML = `<img src="assets/images/icon-upload.svg" alt="Upload Icon" class="rounded bg-secondary bg-opacity-50 border border-1 p-2 w-25" >`; // Show upload icon again
+    imageView.innerHTML = `<img src="assets/images/icon-upload.svg" alt="Upload Icon" class="rounded bg-secondary bg-opacity-50 border border-1 p-2 " >`; // Show upload icon again
     imageButtons.style.display = "none";
 
 });
@@ -81,18 +81,15 @@ changeBtn.addEventListener("click",function changeImage() {
     fileInput.click();
 
 });
-uploadBox.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    uploadBox.classList.add('dragging');
-});
 
-uploadBox.addEventListener('dragleave', () => {
-    uploadBox.classList.remove('dragging');
+uploadBox.addEventListener('dragover', function(e) {
+    e.preventDefault();
 });
 
 uploadBox.addEventListener('drop', (e) => {
     e.preventDefault();
     uploadBox.classList.remove('dragging');
+    fileInput.files = e.dataTransfer.files;
     uploadImage();
 });
 // Optional: If you want the upload box to be clickable to trigger the file input

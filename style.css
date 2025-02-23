@@ -92,3 +92,31 @@ body{
 .image-buttons{
     display: none;
 }
+.btn:hover{
+   color: #FF6B6B;
+}
+
+/* --------------------------------- */
+.ticket-image{
+    width: 20%;
+}
+.upsidedown{
+    transform: rotate(90deg);
+    transition: all 1.0s linear;
+
+}
+.ticketbox{
+    border-color: white;
+    background-color:rgba(255, 255, 255, 0.148) ;
+    justify-self: center;
+    max-width: 600px;
+    overflow-x: hidden;
+
+}
+.cutline{
+    border-left:var(--bs-secondary) dashed;
+    height: 150px;
+    align-self: center;
+    
+
+}
