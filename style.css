@@ -1,13 +1,20 @@
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 body{
     background-image:url(assets/images/background-desktop.png);
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
     font-family: 'Inconsolata';
     display: flex;
     justify-content: center;
+     
+
 }
 .bodywrapper{
     max-width: 700px;
@@ -96,27 +103,80 @@ body{
    color: #FF6B6B;
 }
 
-/* --------------------------------- */
+/* ----------------TICKET PAGE----------------- */
+#ticketpage{
+    overflow-x: hidden;
+}
+
 .ticket-image{
     width: 20%;
+    height: 20%;
+    object-fit: contain;
+    justify-self: center;
 }
 .upsidedown{
     transform: rotate(90deg);
     transition: all 1.0s linear;
 
 }
-.ticketbox{
+/* .ticketbox{
     border-color: white;
     background-color:rgba(255, 255, 255, 0.148) ;
     justify-self: center;
     max-width: 600px;
     overflow-x: hidden;
 
+} */
+.ticketbox {
+    background-color: rgba(255, 255, 255, 0.148);
+    justify-self: center;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 25px; /* Rounded corners */
+    border: 5px solid transparent; /* Transparent border to apply gradient */
+    position: relative;
+   
 }
+
+/* Gradient border trick */
+.ticketbox::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 25px; /* Slightly larger than the box */
+    padding: 2px;
+    background: linear-gradient(to left, #FF6B6B, white);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+}
+
 .cutline{
     border-left:var(--bs-secondary) dashed;
     height: 150px;
     align-self: center;
     
-
 }
+#info span{
+   background: linear-gradient(to right, #FF6B6B, white);
+   -webkit-background-clip: text;
+   color: transparent;
+   display: inline-block;
+}
+.image-logo{
+    width: 90%;
+}
+/* .logo{
+    width: 50%;
+}
+@media screen and (min-width:1000px) {
+    .logo{
+        width: 20%;
+    }
+} */
