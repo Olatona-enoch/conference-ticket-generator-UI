@@ -5,19 +5,26 @@
     margin: 0;
     box-sizing: border-box;
 }
+html{
+    overflow-x: hidden;
+}
 body{
     background-image:url(assets/images/background-desktop.png);
     background-position: center;
     background-repeat: repeat;
-    background-size: cover;
+    /* background-size: cover; */
     font-family: 'Inconsolata';
     display: flex;
     justify-content: center;
-     
+    position: relative;
+    width: 100%;
 
 }
-.bodywrapper{
-    max-width: 700px;
+.pattern-lines{
+    z-index: -1;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
 }
 .upload-box {
     border: 2px dashed rgba(255, 255, 255, 0.5);
@@ -30,37 +37,35 @@ body{
 }
 
 .upload-box:hover {
-    border-color: white;
+    border-color:hsl(245, 15%, 58%);
     background-color:rgba(255, 255, 255, 0.148) ;
 }
-
 /* Error State for Upload Box */
 .upload-box.is-invalid {
-    border-color: #FF6B6B; /* Orange border for invalid file upload */
-    box-shadow: 0 0 12px rgba(255, 107, 107, 0.6);
+    border-color: #FF6B6B; 
 }
 .custom-input {
     background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3) ;
     border-radius: 10px;
     padding: 12px;
     width: 100%;
     position: relative;
 }
 
-/* .custom-input:focus {
-    border-color: white;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
-    background: rgba(255, 255, 255, 0.1);
-    --bs-focus-ring-color: white;
-    
-} */
 .custom-input:focus {
-    --bs-focus-ring-color: rgba(255, 255, 255, 0.3);;
+    --bs-focus-ring-color: rgba(255, 255, 255, 0.3) 2px;
     background: rgba(255, 255, 255, 0.1);
-    border: rgba(255, 255, 255, 0.3);
+    border-spacing: 50%;
+    border:  hsl(252, 6%, 83%) double 4px;
+    border-image: fill;
 }
-
+.custom-input .invalid-feedback{
+    color: hsl(7, 88%, 67%);
+}
+.custom-input.is-invalid {
+    border-color: #FF6B6B !important; 
+}
 
 .btn-custom {
     background: #ff6d6d;
@@ -69,15 +74,12 @@ body{
     font-weight: bold;
     border-radius: 10px;
     transition: 0.3s;
+    color: hsl(248, 70%, 10%);
 }
+
 .btn-custom:hover {
-    border-color: white;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
-    background: rgba(255, 255, 255, 0.1); /* Keep the same background */
-    outline: none;
-}
-.btn-custom:hover {
-    background: #d55a5a;
+    background: #db4d4d;
+    color: hsl(248, 70%, 10%);
 }
 .custom-input::placeholder {
     color: var(--bs-secondary) !important;
@@ -94,18 +96,17 @@ body{
     width: 100px;
     margin-top:1px;
     height: 100px;
+    object-fit: cover;
 
 }
 .image-buttons{
     display: none;
 }
-.btn:hover{
-   color: #FF6B6B;
-}
 
 /* ----------------TICKET PAGE----------------- */
 #ticketpage{
     overflow-x: hidden;
+    height: 100%;
 }
 
 .ticket-image{
@@ -119,6 +120,9 @@ body{
     transition: all 1.0s linear;
 
 }
+.upsidedown p{
+   font-size: 20px;
+}
 /* .ticketbox{
     border-color: white;
     background-color:rgba(255, 255, 255, 0.148) ;
@@ -128,41 +132,42 @@ body{
 
 } */
 .ticketbox {
-    background-color: rgba(255, 255, 255, 0.148);
     justify-self: center;
     max-width: 600px;
-    padding: 20px;
+    height: 100%;
+    padding: 200px;
     border-radius: 25px; /* Rounded corners */
     border: 5px solid transparent; /* Transparent border to apply gradient */
     position: relative;
+    /* border-image: url(assets/images/pattern-ticket.svg); */
    
 }
 
-/* Gradient border trick */
-.ticketbox::before {
+
+
+
+/* .ticketbox::after{
     content: "";
     position: absolute;
-    top: -5px;
-    left: -5px;
+    top:-15px ;
+    left: 450px;
     right: -5px;
     bottom: -5px;
-    border-radius: 25px; /* Slightly larger than the box */
-    padding: 2px;
-    background: linear-gradient(to left, #FF6B6B, white);
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: -1;
-}
-
+    border-radius: 25px;
+    padding: 20px;
+    width: 8%;
+    height: 20%;
+    background-color: rgba(255, 255, 255, 0.148);
+    z-index: 1;
+} */
 .cutline{
     border-left:var(--bs-secondary) dashed;
     height: 150px;
     align-self: center;
+    position: relative;
     
 }
+
 #info span{
    background: linear-gradient(to right, #FF6B6B, white);
    -webkit-background-clip: text;
@@ -172,11 +177,38 @@ body{
 .image-logo{
     width: 90%;
 }
-/* .logo{
+.ticketlayout{
+    width: 100%;
+}
+.logo{
     width: 50%;
 }
+@media screen and (max-width:400px) {
+    .logo{
+        width: 100%;
+    }
+}
+
 @media screen and (min-width:1000px) {
     .logo{
-        width: 20%;
+        width: 30%;
     }
-} */
+}
+
+ @media screen and (max-width:409px){
+    .logoText{
+        font-size: 98%;
+    }
+    .ticketOwner{
+        font-size: 85%;
+    }
+    .small{
+        font-size: 95%;
+    }
+    .conferenceAddress{
+        font-size: 10px;
+    }
+    .image-logo{
+        width: 80%;
+    }
+ }
